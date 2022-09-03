@@ -10,8 +10,9 @@ import java.util.*;
 @Data
 public class Download {
     private String username = "opc";
-    private String host = "193.122.148.244";
-    private String file = "C:/Users/Bemaz/Downloads/ssh-key-2022-08-31.key";
+    private String host = "YOUR IP";
+    private String user = System.getProperty("user.name");
+    private String file = "C:/Users/" + user + "/Downloads/YOUR_key.KEY";
 
     public Download(){
 
@@ -21,8 +22,8 @@ public class Download {
         sftp.connect();
 
         String remoteFile = "/home/opc/Fabric1.19.2/mods/*";
-        String user = System.getProperty("user.name");
-        String localDir = "C:/Users/" + user + "/AppData/Roaming/.minecraft/mods";
+
+        String localDir = "C:/Users/" + this.getUser() + "/Desktop/mods";
 
         File directory = new File(localDir);
         if (directory.isDirectory()) {
